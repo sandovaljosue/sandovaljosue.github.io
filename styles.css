@@ -110,7 +110,9 @@ section.habilidades li {
 footer {
     text-align: center;
     margin-top: 50px;
-    width: auto;
+    width: 100%;
+    display: block;
+   
 }
 
 section.practicas{
@@ -121,10 +123,16 @@ section.practicas{
 }
 section.practicas ul {
     list-style: none;
+
     padding: 0;
 }
 .a-mail{
-    color: #008eff;
+    color: white;
+    text-decoration: none;
+}
+.a-mail:hover{
+    color: #d44524;
+    text-decoration: none;
 }
 .mail{
     display: inline-block;
