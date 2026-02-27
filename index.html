@@ -341,10 +341,21 @@
     <!-- Foto de perfil -->
     <div style="margin-bottom: 20px;">
       <div class="profile-ring">
-     <img src="fotoperfil.jpg">
+        <!-- 📸 REEMPLAZA "tu-foto.jpg" con la ruta de tu imagen -->
+        <img class="profile-img" src="tu-foto.jpg"
+          alt="Luis Josué Sandoval"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="profile-placeholder" style="display:none; flex-direction:column; gap:4px;">
+          <svg width="32" height="32" fill="none" stroke="#555" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span style="font-size:9px; color:#555; font-family:sans-serif; text-align:center; letter-spacing:0.5px;">TU FOTO</span>
+        </div>
       </div>
     </div>
-    <div class="hero-tag">Ingeniero Mecatrónico</div>
+    <div class="hero-tag">✦ Curriculum Vitae · Ingeniero Mecatrónico</div>
     <h1>Luis Josué<br/><span>Sandoval</span> Esqueda</h1>
     <p class="hero-subtitle">
       Especialista en mantenimiento industrial, automatización y control. Más de 6 años de experiencia en empresas de manufactura de primer nivel.
@@ -352,7 +363,7 @@
     <div class="hero-contacts">
       <div class="hero-contact-item">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2172404f454e57404d0f44520f4b52404f61464c40484d0f424e4c">sandoval.es.jsan@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2172404f454e57404d0f44520f4b52404f61464c40484d0f424e4c">[email&#160;protected]</a>
       </div>
       <div class="hero-contact-item">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.91-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
