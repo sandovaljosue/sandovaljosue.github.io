@@ -1,231 +1,599 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Luis Josué Sandoval</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d26780f80e.js" crossorigin="anonymous"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inclusive Sans', sans-serif;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Luis Josué Sandoval Esqueda · Ingeniero Mecatrónico</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f0f2f5;
+    --ink: #1a1a1a;
+    --accent: #0066cc;
+    --muted: #7a7060;
+    --line: #d0d6df;
+    --card: #e4e8ee;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-        }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
 
-        .container {
-            max-width: 960px;
-            margin: auto;
-            padding: 20px;
-        }
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 60px solid var(--accent);
+    opacity: 0.15;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 30px solid var(--accent);
+    opacity: 0.08;
+  }
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-tag {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-subtitle {
+    font-size: 16px;
+    color: #aaa9a5;
+    max-width: 520px;
+    margin-bottom: 32px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #c8c5be;
+  }
+  .hero-contact-item svg { opacity: 0.7; flex-shrink: 0; }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    justify-content: center;
+  }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+  /* ── PROFILE PHOTO ── */
+  .profile-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -56px;
+    position: relative;
+    z-index: 10;
+  }
+  .profile-ring {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--accent), #0077e6);
+    box-shadow: 0 8px 32px rgba(0,102,204,0.35);
+  }
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--bg);
+  }
+  .profile-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 3px solid var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    user-select: none;
+  }
+  .badge {
+    background: rgba(0,102,204,0.1);
+    border: 1px solid rgba(0,102,204,0.3);
+    color: #4da6ff;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
 
-        .img-perfil {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #007BFF;
-            margin-bottom: 15px;
-        }
+  /* ── LAYOUT ── */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+  }
+  @media(max-width: 720px) { .main { grid-template-columns: 1fr; } }
 
-        h1 {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
+  /* ── SECTION TITLES ── */
+  .section { margin-bottom: 44px; }
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
 
-        section {
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            border-bottom: 2px solid #007BFF;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            color: #007BFF;
-        }
-
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        li {
-            margin-bottom: 20px;
-        }
-
-        .p-puesto {
-            font-weight: bold;
-            color: #555;
-        }
-
-        .habilidades li, .idiomas li {
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .exp-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .exp-date {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    background: var(--card);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  .exp-role {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .exp-desc {
+    font-size: 14px;
+    color: #4a4640;
+    line-height: 1.75;
+  }
+  .exp-current {
     display: inline-block;
-    /* background: #007BFF; */
-    color: black;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin: 5px;
-        }
+    width: 8px; height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+    50% { box-shadow: 0 0 0 7px rgba(34,197,94,0.05); }
+  }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            background-color: #007BFF;
-            color: white;
-        }
+  /* ── SIDEBAR ── */
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
 
-        .a-download {
-            display: inline-block;
-            text-align: center;
-            background-color: #28a745;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 auto;
-            display: block;
-            width: fit-content;
-        }
+  /* Skills */
+  .skill-group { margin-bottom: 18px; }
+  .skill-group-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { background: var(--accent); color: white; border-color: var(--accent); }
 
-        a {
-            color: white;
-            text-decoration: none;
-        }
+  /* Idiomas */
+  .lang-item { margin-bottom: 14px; }
+  .lang-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .lang-name { font-size: 13px; font-weight: 700; }
+  .lang-level { font-size: 12px; color: var(--muted); }
+  .lang-bar { height: 4px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .lang-fill { height: 100%; background: var(--accent); border-radius: 999px; }
 
-        a:hover {
-            text-decoration: underline;
-        }
+  /* Educación sidebar */
+  .edu-item { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .edu-school { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 2px; }
+  .edu-degree { font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 2px; }
+  .edu-years { font-size: 11px; color: var(--muted); }
 
-        .contacto{
-          display: inline;
-          padding: 10px 10px 10px 10px;
-        }
-    </style>
+  /* Info personal */
+  .info-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 13px; }
+  .info-icon { color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+  .info-text { color: #4a4640; }
+
+  /* Objetivo */
+  .objetivo-text {
+    font-size: 15px;
+    color: #4a4640;
+    line-height: 1.8;
+    font-style: italic;
+    padding: 20px 24px;
+    background: var(--white);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+  }
+
+  /* Animate on load */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner { animation: fadeUp 0.6s ease both; }
+  .main > * { animation: fadeUp 0.6s ease both; }
+  .main > :nth-child(2) { animation-delay: 0.15s; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img class="img-perfil" src="fotoperfil.jpg" alt="Foto de Luis Josué Sandoval">
-            <h1>Luis Josué Sandoval</h1>
-            <p>Ingeniero mecatrónico especializado en automatización, pruebas y sistemas de control.</p>
-        </header>
 
-        <section>
-            <h2>Experiencia Laboral</h2>
-            <ul>
-                <li>
-                    <h3>General Motors de México</h3>
-                    <p class="p-puesto">Ene. 2024 - actualidad · 1 año 5 meses – Técnico de mantenimiento– MFG</p>
-                    <p>Soporte y programación  a Robot fanuc, PLC Allen Bradley y conveyors de linea de producción. Arranque y validación de celda automatizada en el área toldos  de nuevo proyecto  para modelos 2025 en Equinox y Terrain </p>
-                </li>
-                <li>
-                    <h3>Viscofan de México, S.A. DE C.V.</h3>
-                    <p class="p-puesto">Feb. 2023 - ene. 2024 · 1 año – Técnico de control</p>
-                    <p>Soporte en sistemas de control (PLC, variadores de frecuencia, HMI). Encargado del arranque de maquinaria industrial para el proyecto Pepper, el cual trasladó sus operaciones de Canadá a México. Responsable de la capacitación del personal en procesos, operación y mantenimiento de los equipos instalados..</p>
-                    
-                </li>
-                <li>
-                    <h3>Interruptores de México, S.A. DE C.V.(Littelfuse, Inc)</h3>
-                    <p class="p-puesto">Junio 2022 - Febrero 2023 – Ingeniero mecatrónico</p>
-                    <p>Diseño de equipos de  automatización y creación de documentación técnica., Encargado de proyecto de automatizacion soldadura por inducción, factibilidad y pruebas de prototipo se realizaron en empresa Ambrell en Rochester (Nueva York). </p>
-                </li>
-                <li>
-                    <h3>Draexlmaier Components Automotive de México</h3>
-                    <p class="p-puesto">Febrero 2019 – Junio 2022 – Test Engineer</p>
-                    <p>Soporte, mantenimiento y mejora continua en equipos de prueba, asi como solucionar problemas complejos en equipos de prueba, Encargado de la capacitación a equipo de trabajo(Técnicos) del departamento, tambien encargado de la documentación auditable del departamento y reporte de los turno.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Educación</h2>
-            <ul>
-                <li>
-                    <h3>Universidad Autónoma de San Luis Potosí</h3>
-                    <p class="p-puesto">2013 - 2018-Cédula profesional</p>
-                    <p>Ingeniería Mecatrónica</p>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Prácticas Profesionales</h2>
-            <ul>
-                <li>
-                    <h3>Universidad Autónoma de San Luis Potosí</h3>
-                    <p class="p-puesto">Noviembre 2018 - Junio 2019</p>
-                    <p>Encargado de equipos de cómputo y soporte técnico en laboratorios educativos.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section class="habilidades">
-            <h2>Habilidades Técnicas</h2>
-            <ul>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>HTML5</li>
-                <li>Diseño web</li>
-                <li>MySQL</li>
-                <li>Linux</li>
-                <li>Windows</li>
-                <li>Office</li>
-                <li>Diseño mecánico (Creo Parametric 8.0)</li>
-                <li>Programación PLC Allen Bradley</li>
-                
-                
-            </ul>
-        </section>
-
-        <section class="idiomas">
-            <h2>Idiomas</h2>
-            <ul>
-                <li>Español (nativo)</li>
-                <li>Inglés (70%)</li>
-            </ul>
-        </section>
-         <section>
-            <h2>Pasatiempos</h2>
-            <ul>
-                <li>
-  
-                  <p>Desarrollo de software</p>
-                   <p>Crecimiento personal y profesional</p>
-                  <p>Lectura</p>
-                </li>
-            </ul>
-        </section>
-              <section>
-            <h2>Información personal</h2>
-            <ul>
-                <li>
-                  <p>(Visa) tipo B-2</p> 
-                </li>
-            </ul>
-        </section>
-
-        <a class="a-download" href="cv.pdf" download>Descargar CV</a>
-
-        <footer>
-            <p class="contacto"><i class="fa-solid fa-envelope"></i> <a href="mailto:Sandoval.es.jsan@gmail.com">Sandoval.es.jsan@gmail.com</a></p>
-            <p class="contacto"><i class="fa-solid fa-phone"></i> <a href="tel:4881202997">4881202997</a></p>
-            <p class="contacto"><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/josue-sandoval-783990112" target="_blank">LinkedIn</a></p>
-        </footer>
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-inner">
+    <!-- Foto de perfil -->
+    <div style="margin-bottom: 20px;">
+      <div class="profile-ring">
+        <div class="profile-placeholder">👤</div>
+      </div>
     </div>
+    <div class="hero-tag">✦ Curriculum Vitae · Ingeniero Mecatrónico</div>
+    <h1>Luis Josué<br/><span>Sandoval</span> Esqueda</h1>
+    <p class="hero-subtitle">
+      Especialista en mantenimiento industrial, automatización y control. Más de 6 años de experiencia en empresas de manufactura de primer nivel.
+    </p>
+    <div class="hero-contacts">
+      <div class="hero-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2172404f454e57404d0f44520f4b52404f61464c40484d0f424e4c">[email&#160;protected]</a>
+      </div>
+      <div class="hero-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.91-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +52 488 120 2997
+      </div>
+      <div class="hero-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        San Luis Potosí, México
+      </div>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">PLC · HMI</span>
+      <span class="badge">Neumática · Hidráulica</span>
+      <span class="badge">Automatización</span>
+      <span class="badge">Creo Parametric</span>
+      <span class="badge">Visa B-2 USA</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ MAIN CONTENT ══ -->
+<div class="main">
+
+  <!-- LEFT COLUMN -->
+  <div>
+
+    <!-- OBJETIVO -->
+    <div class="section">
+      <div class="section-label">Objetivo</div>
+      <p class="objetivo-text">
+        Crecer profesionalmente con un trabajo estable que me permita superarme cada día, tanto en el ámbito laboral como en el personal, aportando mis habilidades técnicas y experiencia en entornos de manufactura de alto nivel.
+      </p>
+    </div>
+
+    <!-- EXPERIENCIA -->
+    <div class="section">
+      <div class="section-label">Experiencia Profesional</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company"><span class="exp-current"></span>General Motors Company</div>
+          <span class="exp-date">Feb 2024 – Actualmente</span>
+        </div>
+        <div class="exp-role">Técnico de Mantenimiento – MFG</div>
+        <p class="exp-desc">
+          Responsable del mantenimiento, diagnóstico y reparación de equipos de procesos industriales en entorno de manufactura. Gestión de electricidad y electrónica (PLC, HMI), controles e instrumentación, mecánica, neumática, hidráulica, así como mantenimiento preventivo y predictivo.
+        </p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Viscofan de México, S.A. de C.V.</div>
+          <span class="exp-date">Jun 2023 – Feb 2024</span>
+        </div>
+        <div class="exp-role">Técnico de Control</div>
+        <p class="exp-desc">
+          Soporte integral a equipos de producción en sistemas de control: PLC, drivers, variadores, servomotores, HMI. Lideré el arranque de un nuevo proyecto procedente de Canadá, coordinando la preparación de equipos y la capacitación del personal de producción.
+        </p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Interruptores de México, S.A. de C.V.</div>
+          <span class="exp-date">Jun 2022 – Feb 2023</span>
+        </div>
+        <div class="exp-role">Ingeniero Mecatrónico</div>
+        <p class="exp-desc">
+          Diseño de equipos de automatización y liderazgo de proyecto con pruebas realizadas en Providence, Rhode Island (USA). Diseño de testers y moldes, elaboración de diagramas eléctricos físicos y en Creo Parametric, con documentación técnica completa.
+        </p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Dräxlmaier Group</div>
+          <span class="exp-date">Feb 2019 – Jun 2022</span>
+        </div>
+        <div class="exp-role">Test Engineer · Leader</div>
+        <p class="exp-desc">
+          Soporte a pruebas eléctricas, actualizaciones y configuraciones de software, mantenimiento preventivo y correctivo a equipos de prueba. Elaboración de reportes diarios y semanales, y medición de eficiencia del equipo técnico a cargo.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN (SIDEBAR) -->
+  <div>
+
+    <!-- HABILIDADES -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Habilidades Técnicas</div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Programación</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">VBA</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Web</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Automatización</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PLC</span>
+          <span class="skill-tag">HMI</span>
+          <span class="skill-tag">Variadores</span>
+          <span class="skill-tag">Servomotores</span>
+          <span class="skill-tag">Neumática</span>
+          <span class="skill-tag">Hidráulica</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Software</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Creo Parametric 8.0</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Sistemas Operativos</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Windows</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDIOMAS -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Idiomas</div>
+      <div class="lang-item">
+        <div class="lang-header">
+          <span class="lang-name">Español</span>
+          <span class="lang-level">Nativo</span>
+        </div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-header">
+          <span class="lang-name">Inglés</span>
+          <span class="lang-level">Intermedio — 75%</span>
+        </div>
+        <div class="lang-bar"><div class="lang-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    <!-- EDUCACIÓN -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Educación</div>
+      <div class="edu-item">
+        <div class="edu-degree">Ingeniería Mecatrónica</div>
+        <div class="edu-school">Universidad Autónoma de San Luis Potosí</div>
+        <div class="edu-years">2013 – 2018</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Técnico en Electromecánica</div>
+        <div class="edu-school">CONALEP</div>
+        <div class="edu-years">2010 – 2013</div>
+      </div>
+    </div>
+
+    <!-- INFO PERSONAL -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Información Personal</div>
+      <div class="info-row">
+        <span class="info-icon">🎂</span>
+        <span class="info-text">29 de julio de 1995</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">💍</span>
+        <span class="info-text">Casado</span>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🇺🇸</span>
+        <span class="info-text">Visa tipo B-2 (Estados Unidos)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer style="
+  background: var(--ink);
+  padding: 32px 24px;
+  text-align: center;
+  border-top: 1px solid #2a2a2a;
+">
+  <button onclick="downloadCV()" style="
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(0,102,204,0.4);
+  "
+  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(0,102,204,0.5)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,102,204,0.4)'"
+  >
+    <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Descargar CV
+  </button>
+  <p style="margin-top: 16px; color: #444; font-size: 12px; font-family: 'Source Sans 3', sans-serif;">
+    Luis Josué Sandoval Esqueda · Ingeniero Mecatrónico · 2026
+  </p>
+</footer>
+
+<script>
+  function downloadCV() {
+    const html = document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'CV-Luis-Sandoval.html';
+    a.click();
+  }
+</script>
 </body>
 </html>
 
